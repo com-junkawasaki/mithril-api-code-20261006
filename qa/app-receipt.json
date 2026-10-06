@@ -1,0 +1,86 @@
+{
+  "format": "mithril.code-inference-receipt/v1",
+  "provider": "mithril",
+  "endpoint": "https://api.mithril.fund/v1/chat/completions",
+  "model": "qwen/qwen3.8-27b",
+  "request_id": "chat:b52b078f-1408-4e22-81bd-a68c15203f08",
+  "completion_id": "chatcmpl-b52b078f-1408-4e22-81bd-a68c15203f08",
+  "goal": "Toggle completion and count unfinished tasks",
+  "usage": {
+    "prompt_tokens": 1295,
+    "completion_tokens": 219,
+    "total_tokens": 1514
+  },
+  "logic": {
+    "functions": [
+      {
+        "id": "toggle",
+        "namespace": "todo.interaction",
+        "name": "toggle",
+        "arg": {
+          "name": "done",
+          "type": "bool"
+        },
+        "returns": "bool"
+      },
+      {
+        "id": "remaining",
+        "namespace": "todo.summary",
+        "name": "remaining",
+        "arg": {
+          "name": "states",
+          "type": [
+            "vector",
+            "bool"
+          ]
+        },
+        "returns": "int"
+      }
+    ],
+    "bodies": {
+      "toggle": {
+        "kind": "operation",
+        "id": "if-:bool",
+        "children": [
+          {
+            "kind": "argument",
+            "argument-index": 0
+          },
+          {
+            "kind": "literal",
+            "value": false
+          },
+          {
+            "kind": "literal",
+            "value": true
+          }
+        ]
+      },
+      "remaining": {
+        "kind": "operation",
+        "id": "count-vector-bool",
+        "children": [
+          {
+            "kind": "operation",
+            "id": "filter-vector-bool",
+            "children": [
+              {
+                "kind": "reference",
+                "function-ref": "toggle"
+              },
+              {
+                "kind": "argument",
+                "argument-index": 0
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "files": {
+    "src/todo/interaction.cljk": "(ns todo.interaction)\n(defn toggle [done] (if done false true))\n(def marker :kept)\n",
+    "src/todo/summary.cljk": "(ns todo.summary (:require [todo.interaction]))\n(defn remaining [states] (count (filterv todo.interaction/toggle states)))\n(def marker :kept)\n"
+  },
+  "verified_state_vectors": 511
+}

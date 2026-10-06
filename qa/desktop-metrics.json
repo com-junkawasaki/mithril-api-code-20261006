@@ -1,0 +1,24 @@
+{
+  "build_id": "chatcmpl-8ad88c2a-0cf5-415b-9351-77333c5f464c",
+  "development": {
+    "owner": "starter + user",
+    "wall_seconds": null,
+    "model_tokens": null,
+    "model_cost_usd": null
+  },
+  "generation": {
+    "provider": "mithril",
+    "model": "qwen/qwen3.8-27b",
+    "scope": "Completion toggle and unfinished count only; UI is a starter.",
+    "runner_seconds": 8.256,
+    "decisions": 1,
+    "attempts": 1,
+    "input_tokens": 318,
+    "output_tokens": 219,
+    "api_cost_usd": null,
+    "receipt_sha256": "ba2956af4691ef151f5f2e505c328e7a8bcb1cfe490638f089788db29ee10c50"
+  },
+  "policy": {
+    "wasm_sha256": "ad69eb3a3768cc95aef3429c414ea6acfbf7dc778ffa7d48a597f737dc0b8f8c"
+  }
+}

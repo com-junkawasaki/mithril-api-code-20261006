@@ -1,0 +1,26 @@
+{
+  "verification-passed": true,
+  "model-kind": "mithril-api-typed-ast",
+  "provider": "mithril",
+  "model": "qwen/qwen3.8-27b",
+  "endpoint": "https://api.mithril.fund/v1/chat/completions",
+  "jev-controller-used": false,
+  "receipt-id": "chatcmpl-b52b078f-1408-4e22-81bd-a68c15203f08",
+  "receipt-sha256": "8a68a09a7bdd00a59190ad4906e912e22a44060be0af15c040453ab0df51b652",
+  "decision-count": 1,
+  "attempts": 1,
+  "input-tokens": {
+    "total": 1295
+  },
+  "output-tokens": {
+    "total": 219
+  },
+  "cost": {
+    "api-amount": null,
+    "api-currency": "USD"
+  },
+  "timing": {
+    "cli-wall-seconds": 8.289,
+    "boundary": "Mithril API inference, AST admission, 511 state checks and deterministic source emission; excludes UI and project publishing."
+  }
+}
